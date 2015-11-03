@@ -7,29 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.graphics.Color;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.location.LocationListener;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.OnMapReadyCallback;
+import com.variable.framework.node.NodeDevice;
 
 public class MainActivity extends AppCompatActivity{
     public boolean recordingState;
+    private NodeDevice mConnectedNODE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //set variables
         recordingState = false;
-
-        //initialise all the components needed to establish the service
-        //TODO - need to look at the below
-        //https://developers.google.com/maps/documentation/android-api/map
-        // and
-        //https://developer.android.com/training/location/retrieve-current.html
-
+        //TODO - breaks here, change sdk version for 1.7?
+        //com.variable.application.NodeApplication.initialize(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -65,4 +54,11 @@ public class MainActivity extends AppCompatActivity{
 //
 //        System.out.format("Background Colour: %d\n", Color.BLACK);
     }
+
+    //node stuff
+    public void setActiveNode(NodeDevice node) { this.mConnectedNODE = node; }
+    public NodeDevice getActiveNode(NodeDevice node) { return this.mConnectedNODE; }
+
+    /** @returns true if the NODE is connected **/
+    public boolean isConnected(){ return mConnectedNODE != null && mConnectedNODE.isConnected();  }
 }
