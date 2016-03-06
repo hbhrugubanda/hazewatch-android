@@ -25,4 +25,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
     compile 'com.google.android.gms:play-services:8.1.0'
+    compile files('libs/Android.API-1.8.jar')
+    compile files('libs/Android.API-1.8-javadoc.jar')
 }
